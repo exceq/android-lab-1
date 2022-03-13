@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2535" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/drawable/circle_background.xml" value="0.2145" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.2535" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.2535" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2535" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/drawable/person_icon.xml" value="0.2535" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/layout/activity_main.xml" value="0.9" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/layout/balance_item.xml" value="0.5" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/layout/category_title.xml" value="0.3546875" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/layout/tariff_item.xml" value="0.33" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/layout/user_info.xml" value="0.5" />
+        <entry key="..\:/Users/mrmis/AndroidStudioProjects/androidlab1/app/src/main/res/layout/user_info_item.xml" value="0.24791666666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    android:outlineSpotShadowColor="#BBBBBB"
+    android:layout_margin="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/balanceItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/moneyIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/circle_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_currency_ruble_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/balanceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/moneyIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/personId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/middle_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/moneyIcon"
+            app:layout_constraintStart_toEndOf="@id/moneyIcon"
+            app:layout_constraintTop_toBottomOf="@id/balanceTitle"
+            tools:text="ЛС: 10101011" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/currentBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:textColor="#5382c1"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/moneyIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/moneyIcon"
+            tools:text="100.42 ₽" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/toPayForMonthTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/middle_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moneyIcon"
+            tools:text="К оплате за сентябрь: 0.00Р" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pay_button_text"
+            android:textColor="#df8f20"
+            android:textSize="@dimen/middle_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
+

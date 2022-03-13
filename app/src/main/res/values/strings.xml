@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">android-lab-1</string>
+    <string name="personal_account_title">Личный кабинет</string>
+    <string name="balance_title">Ваш баланс</string>
+    <string name="pay_button_text">ПОПОЛНИТЬ</string>
+    <string name="per_month_text">/мес</string>
+</resources>

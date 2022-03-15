@@ -8,8 +8,7 @@
     android:padding="18dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:outlineSpotShadowColor="#BBBBBB">
+    app:layout_constraintTop_toTopOf="parent">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tariffTitle"

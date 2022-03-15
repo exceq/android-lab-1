@@ -22,10 +22,8 @@ class RoundItemDecorator(private val background: Drawable, private val itemViewT
                     if (lastView == null)
                         lastView = view
 
-                    if (lastView != null
-                        && adapter.getItemViewType(parent.getChildAdapterPosition(lastView!!))
-                            != adapter.getItemViewType(position)
-                    ) {
+                    if (adapter.getItemViewType(parent.getChildAdapterPosition(lastView!!))
+                            != adapter.getItemViewType(position)) {
                         lastView = view
                     }
 

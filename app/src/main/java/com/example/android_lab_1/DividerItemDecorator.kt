@@ -7,11 +7,12 @@ import android.util.Log
 import android.view.View
 import androidx.core.view.children
 import androidx.core.view.get
+import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 
 //https://temofeev.ru/info/articles/kastomnyy-itemdecoration-dlya-recyclerview/
 
-class MyItemDecorator(private val dividerDrawable: Drawable) :
+class DividerItemDecorator(private val dividerDrawable: Drawable) :
     RecyclerView.ItemDecoration() {
 
     private val dividerWidth = dividerDrawable.intrinsicWidth
@@ -21,9 +22,9 @@ class MyItemDecorator(private val dividerDrawable: Drawable) :
         parent.adapter?.let { adapter ->
             val childAdapterPosition = parent.getChildAdapterPosition(v)
                 .let { if (it == RecyclerView.NO_POSITION) return else it }
-            rect.right = // Add space/"padding" on right side
+            rect.bottom = // Add space/"padding" on right side
                 if (childAdapterPosition == adapter.itemCount - 1) 0    // No "padding"
-                else dividerWidth                                       // Drawable width "padding"
+                else dividerHeight                                     // Drawable height "padding"
         }
     }
 
@@ -34,18 +35,14 @@ class MyItemDecorator(private val dividerDrawable: Drawable) :
                     val position = parent.getChildAdapterPosition(view)
                         .let { if (it == RecyclerView.NO_POSITION) return else it }
 
-
-                    val ad = parent.adapter
-                    Log.d("DEBUG", "ad?.getItemId(position) at pos $position = " + ad?.getItemViewType(position))
                     if (position != adapter.itemCount - 1
-                        && ad?.getItemViewType(position) == ad?.getItemViewType(position + 1)
+                        && adapter.getItemViewType(position) == adapter.getItemViewType(position + 1)
                     ) {
-                        val left = view.left
-                        val top = view.bottom - 5
-                        val right = left + view.width
-                        val bottom = top + 10
+                        val left = view.left + 50
+                        val top = view.bottom
+                        val right = left + view.width - 100
+                        val bottom = top + dividerHeight
                         dividerDrawable.bounds = Rect(left, top, right, bottom)
-                        Log.d("DEBUG", "RECT " + Rect(left, top, right, bottom))
                         dividerDrawable.draw(canvas)
                     }
                 }

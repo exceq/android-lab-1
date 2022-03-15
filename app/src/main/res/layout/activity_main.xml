@@ -29,6 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountTitle"
-        tools:listitem="@layout/balance_item" />
+        tools:itemCount="3"
+        tools:listitem="@layout/user_info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

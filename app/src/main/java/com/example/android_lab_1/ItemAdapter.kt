@@ -70,6 +70,7 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()
             is CategoryTitleItem -> CATEGORY
             is TariffItem -> TARIFF
             is UserInfoItem -> USER_INFO
+            else -> -1
         }
     }
 

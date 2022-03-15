@@ -38,14 +38,14 @@ class MyItemDecorator(private val dividerDrawable: Drawable) :
                     val ad = parent.adapter
                     Log.d("DEBUG", "ad?.getItemId(position) at pos $position = " + ad?.getItemViewType(position))
                     if (position != adapter.itemCount - 1
-                       && ad?.getItemViewType(position) == ad?.getItemViewType(position + 1)
+                        && ad?.getItemViewType(position) == ad?.getItemViewType(position + 1)
                     ) {
-                        val left = 120
-                        val top = view.bottom
-                        val right = 900
-                        val bottom = view.bottom + dividerHeight
+                        val left = view.left
+                        val top = view.bottom - 5
+                        val right = left + view.width
+                        val bottom = top + 10
                         dividerDrawable.bounds = Rect(left, top, right, bottom)
-                        Log.d("DEBUG", "RECT "+Rect(left, top, right, bottom))
+                        Log.d("DEBUG", "RECT " + Rect(left, top, right, bottom))
                         dividerDrawable.draw(canvas)
                     }
                 }

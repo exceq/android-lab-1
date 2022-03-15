@@ -3,6 +3,9 @@ package com.example.android_lab_1
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -23,9 +26,10 @@ class MainActivity : AppCompatActivity() {
             UserInfoItem("Доступные услуги", applicationContext.getDrawable(R.drawable.ic_baseline_widgets_24)),
         )
         val recyclerView = findViewById<RecyclerView>(R.id.accountItems)
-
+        Log.d("DEBUG", "drawable: " + applicationContext.getDrawable(R.drawable.divider))
         val adapter = ItemAdapter()
         adapter.submitList(items)
+        recyclerView.addItemDecoration(MyItemDecorator(ResourcesCompat.getDrawable(resources, R.drawable.divider, null)!!))
 
         recyclerView.adapter = adapter
     }

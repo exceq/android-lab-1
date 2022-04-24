@@ -1,79 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/balanceItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp"
-    android:outlineSpotShadowColor="#BBBBBB">
+    android:padding="18dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tariffTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Тариф 'Улыбка (беспла..." />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tariffDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/middle_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tariffTitle"
+        tools:text="Скорость до 100 Мбит/с" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/balanceItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tariffTitle"
+            android:id="@+id/perMonthPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
             android:textColor="@color/black"
-            android:textSize="@dimen/title_text_size"
+            android:textSize="@dimen/price_text_size"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/perMonthText"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Тариф 'Улыбка (беспла..." />
+            tools:text="100 ₽" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tariffDescription"
+            android:id="@+id/perMonthText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="0dp"
+            android:text="@string/per_month_text"
+            android:textColor="@color/black"
             android:textSize="@dimen/middle_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tariffTitle"
-            tools:text="Скорость до 100 Мбит/с" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/perMonthPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/price_text_size"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@id/perMonthText"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="100 ₽" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/perMonthText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="0dp"
-                android:text="@string/per_month_text"
-                android:textColor="@color/black"
-                android:textSize="@dimen/middle_text_size"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 

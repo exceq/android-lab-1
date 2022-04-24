@@ -12,7 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()) {
 
+    companion object {
+        const val BALANCE: Int = 0
+        const val CATEGORY: Int = 1
+        const val TARIFF: Int = 2
+        const val USER_INFO: Int = 3
+        const val BIG_TITLE: Int = 4
+    }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        
 
         @SuppressLint("SetTextI18n")
         fun bind(item: Item) {
@@ -37,15 +46,12 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()
                     itemView.findViewById<TextView>(R.id.infoText).text = item.title
                     itemView.findViewById<ImageView>(R.id.infoIcon).setImageDrawable(item.icon)
                 }
+                is BigTitleItem -> {
+                    itemView.findViewById<TextView>(R.id.accountTitle).text = item.title
+                }
+
             }
         }
-    }
-
-    companion object {
-        const val BALANCE: Int = 0
-        const val CATEGORY: Int = 1
-        const val TARIFF: Int = 2
-        const val USER_INFO: Int = 3
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ViewHolder {
@@ -58,6 +64,8 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()
                 .inflate(R.layout.tariff_item, parent, false)
             USER_INFO -> LayoutInflater.from(parent.context)
                 .inflate(R.layout.user_info, parent, false)
+            BIG_TITLE -> LayoutInflater.from(parent.context)
+                .inflate(R.layout.big_title, parent, false)
             else -> throw Exception("Unknown viewType")
         }
 
@@ -70,6 +78,8 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()
             is CategoryTitleItem -> CATEGORY
             is TariffItem -> TARIFF
             is UserInfoItem -> USER_INFO
+            is BigTitleItem -> BIG_TITLE
+            else -> -1
         }
     }
 

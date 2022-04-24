@@ -1,4 +1,4 @@
-package com.example.android_lab_1
+package com.example.android_lab_1.ui.main
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,8 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android_lab_1.*
+import com.example.android_lab_1.data.*
 
-class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()) {
+class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDiffCallback()) {
 
     companion object {
         const val BALANCE: Int = 0
@@ -21,32 +23,31 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        
+
 
         @SuppressLint("SetTextI18n")
-        fun bind(item: Item) {
+        fun bind(item: RecycleViewItem) {
             when (item) {
-                is BalanceItem -> {
+                is Balance -> {
                     itemView.findViewById<TextView>(R.id.balanceTitle).text = item.title
-                    itemView.findViewById<TextView>(R.id.personId).text = item.personId.toString()
-                    itemView.findViewById<TextView>(R.id.currentBalance).text =
-                        "${item.currentBalance} ₽"
+                    itemView.findViewById<TextView>(R.id.personId).text = item.accountNumber.toString()
+                    itemView.findViewById<TextView>(R.id.currentBalance).text = "${item.balance} ₽"
                     val toPayTitle = itemView.findViewById<TextView>(R.id.toPayForMonthTitle)
-                    toPayTitle.text = "К оплате за ${item.currentMonth}: ${item.toPayForMonth} ₽"
+                    toPayTitle.text = "К оплате за месяц: ${item.nextPay} ₽" // TODO конкретный месяц
                 }
-                is TariffItem -> {
+                is Tariff -> {
                     itemView.findViewById<TextView>(R.id.tariffTitle).text = item.title
                     itemView.findViewById<TextView>(R.id.tariffDescription).text = item.description
-                    itemView.findViewById<TextView>(R.id.perMonthPrice).text = "${item.price} ₽"
+                    itemView.findViewById<TextView>(R.id.perMonthPrice).text = "${item.cost} ₽"
                 }
-                is CategoryTitleItem -> {
+                is CategoryTitle -> {
                     itemView.findViewById<TextView>(R.id.categoryTitle).text = item.title
                 }
-                is UserInfoItem -> {
+                is UserInfo -> {
                     itemView.findViewById<TextView>(R.id.infoText).text = item.title
-                    itemView.findViewById<ImageView>(R.id.infoIcon).setImageDrawable(item.icon)
+                    itemView.findViewById<ImageView>(R.id.infoIcon).setImageDrawable(item.profileIcon)
                 }
-                is BigTitleItem -> {
+                is BigTitle -> {
                     itemView.findViewById<TextView>(R.id.accountTitle).text = item.title
                 }
 
@@ -54,7 +55,7 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = when (viewType) {
             BALANCE -> LayoutInflater.from(parent.context)
                 .inflate(R.layout.balance_item, parent, false)
@@ -74,25 +75,25 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ViewHolder>(ItemDiffCallback()
 
     override fun getItemViewType(position: Int): Int {
         return when (currentList[position]) {
-            is BalanceItem -> BALANCE
-            is CategoryTitleItem -> CATEGORY
-            is TariffItem -> TARIFF
-            is UserInfoItem -> USER_INFO
-            is BigTitleItem -> BIG_TITLE
+            is Balance -> BALANCE
+            is CategoryTitle -> CATEGORY
+            is Tariff -> TARIFF
+            is UserInfo -> USER_INFO
+            is BigTitle -> BIG_TITLE
             else -> -1
         }
     }
 
-    override fun onBindViewHolder(holder: ItemAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(currentList[position])
     }
 
 
-    class ItemDiffCallback : DiffUtil.ItemCallback<Item>() {
-        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean =
+    class ItemDiffCallback : DiffUtil.ItemCallback<RecycleViewItem>() {
+        override fun areItemsTheSame(oldItem: RecycleViewItem, newItem: RecycleViewItem): Boolean =
             oldItem === newItem
 
-        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean =
+        override fun areContentsTheSame(oldItem: RecycleViewItem, newItem: RecycleViewItem): Boolean =
             oldItem == newItem
     }
 }

@@ -1,4 +1,4 @@
-package com.example.android_lab_1
+package com.example.android_lab_1.ui.main
 
 import android.graphics.Canvas
 import android.graphics.Rect
@@ -26,8 +26,6 @@ class RoundItemDecorator(private val background: Drawable, private val itemViewT
                             != adapter.getItemViewType(position)) {
                         lastView = view
                     }
-
-                    Log.d("BACKGROUND", "Item position: $position - Item View Type ${adapter.getItemViewType(position)}")
 
                     if (lastView != null && lastView !== view
                         && adapter.getItemViewType(position) == itemViewType

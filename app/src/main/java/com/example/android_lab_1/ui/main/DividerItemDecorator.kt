@@ -1,13 +1,10 @@
-package com.example.android_lab_1
+package com.example.android_lab_1.ui.main
 
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.View
 import androidx.core.view.children
-import androidx.core.view.get
-import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 
 //https://temofeev.ru/info/articles/kastomnyy-itemdecoration-dlya-recyclerview/

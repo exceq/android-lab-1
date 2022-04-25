@@ -29,11 +29,11 @@ class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDif
         fun bind(item: RecycleViewItem) {
             when (item) {
                 is Balance -> {
-                    itemView.findViewById<TextView>(R.id.balanceTitle).text = item.title
+                    itemView.findViewById<TextView>(R.id.balanceTitle).text = "Ваш баланс" //item.title
                     itemView.findViewById<TextView>(R.id.personId).text = item.accountNumber.toString()
                     itemView.findViewById<TextView>(R.id.currentBalance).text = "${item.balance} ₽"
                     val toPayTitle = itemView.findViewById<TextView>(R.id.toPayForMonthTitle)
-                    toPayTitle.text = "К оплате за месяц: ${item.nextPay} ₽" // TODO конкретный месяц
+                    toPayTitle.text = "К оплате за месяц: ${item.nextPay} ₽"
                 }
                 is Tariff -> {
                     itemView.findViewById<TextView>(R.id.tariffTitle).text = item.title
@@ -45,7 +45,7 @@ class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDif
                 }
                 is UserInfo -> {
                     itemView.findViewById<TextView>(R.id.infoText).text = item.title
-                    itemView.findViewById<ImageView>(R.id.infoIcon).setImageDrawable(item.profileIcon)
+//                    itemView.findViewById<ImageView>(R.id.infoIcon).setImageDrawable(item.profileIcon) // TODO картинку профиля
                 }
                 is BigTitle -> {
                     itemView.findViewById<TextView>(R.id.accountTitle).text = item.title
@@ -94,6 +94,6 @@ class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDif
             oldItem === newItem
 
         override fun areContentsTheSame(oldItem: RecycleViewItem, newItem: RecycleViewItem): Boolean =
-            oldItem == newItem
+            oldItem.hashCode() == newItem.hashCode()
     }
 }

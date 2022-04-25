@@ -11,6 +11,5 @@ data class Balance(
     val nextPay: Double,
     @SerializedName("id")
     val id: Int,
+) : RecycleViewItem
 
-    override var title : String
-) : RecycleViewItem(title)

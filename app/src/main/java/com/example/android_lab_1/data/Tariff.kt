@@ -10,5 +10,5 @@ data class Tariff (
     @SerializedName("cost")
     val cost: Double,
     @SerializedName("title")
-    override var title: String,
-) : RecycleViewItem(title)
+    val title: String,
+) : RecycleViewItem

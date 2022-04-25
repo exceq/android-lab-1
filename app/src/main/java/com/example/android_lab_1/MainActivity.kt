@@ -1,9 +1,14 @@
 package com.example.android_lab_1
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
+import android.util.Log
+import android.view.View
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_lab_1.data.*
@@ -12,11 +17,15 @@ import com.example.android_lab_1.ui.main.ItemAdapter
 import com.example.android_lab_1.ui.main.RoundItemDecorator
 import com.example.android_lab_1.api.RetrofitClient
 import com.example.android_lab_1.ui.main.MainViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
-
+    private val adapter = ItemAdapter()
+    private val items: MutableList<RecycleViewItem> = mutableListOf()
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,33 +33,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
+        viewModel.getDataForProfile()
+            .observe(this) { viewItems ->
+                items.addAll(viewItems);
+                adapter.submitList(items)
+            }
 
-        val balance = viewModel.getBalance()
-        val tariffs = viewModel.getTariffs()
-        val userInfo = viewModel.getUserInfo()
-
-
-//        val balance : Balance = RetrofitClient.retrofitService.getBalance()
-//        balance.title = "Ваш баланс"
-//
-//        val tariffs = RetrofitClient.retrofitService.getTariffs()
-//        val userInfo : UserInfo = RetrofitClient.retrofitService.getUserInfo()
-        userInfo.value?.profileIcon =
-            applicationContext.getDrawable(R.drawable.ic_baseline_account_circle_24)
-
-        val items: MutableList<RecycleViewItem> = mutableListOf(
-            BigTitle("Личный кабинет"),
-            balance.value!!,
-            CategoryTitle("Тариф")
-        )
-        items.addAll(tariffs.value!!)
-        items.add(CategoryTitle("Пользователь"))
-        items.add(userInfo.value!!)
+//        userInfo.value?.profileIcon =
+//            applicationContext.getDrawable(R.drawable.ic_baseline_account_circle_24)
 
         val recyclerView = findViewById<RecyclerView>(R.id.accountItems)
-        val adapter = ItemAdapter()
-        adapter.submitList(items)
 
+        //region декораторы
         // Фон с круглыми углами для тарифа
         recyclerView.addItemDecoration(
             RoundItemDecorator(
@@ -73,6 +67,7 @@ class MainActivity : AppCompatActivity() {
                 ResourcesCompat.getDrawable(resources, R.drawable.divider, null)!!
             )
         )
+        //endregion
 
         recyclerView.adapter = adapter
     }

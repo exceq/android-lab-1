@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="Главная" />
+
+
+    <item
+        android:id="@+id/blankFragment"
+        android:icon="@drawable/ic_baseline_cast_24"
+        android:title="Настройки" />
+</menu>

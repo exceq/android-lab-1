@@ -10,6 +10,8 @@ import android.view.View
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_lab_1.data.*
 import com.example.android_lab_1.ui.main.DividerItemDecorator
@@ -17,58 +19,33 @@ import com.example.android_lab_1.ui.main.ItemAdapter
 import com.example.android_lab_1.ui.main.RoundItemDecorator
 import com.example.android_lab_1.api.RetrofitClient
 import com.example.android_lab_1.ui.main.MainViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
-    private val adapter = ItemAdapter()
-    private val items: MutableList<RecycleViewItem> = mutableListOf()
-
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.getDataForProfile()
-            .observe(this) { viewItems ->
-                items.addAll(viewItems);
-                adapter.submitList(items)
-            }
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
-//        userInfo.value?.profileIcon =
-//            applicationContext.getDrawable(R.drawable.ic_baseline_account_circle_24)
+        val container =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 
-        val recyclerView = findViewById<RecyclerView>(R.id.accountItems)
+        val navController = container.navController
 
-        //region декораторы
-        // Фон с круглыми углами для тарифа
-        recyclerView.addItemDecoration(
-            RoundItemDecorator(
-                ResourcesCompat.getDrawable(resources, R.drawable.background_tariff, null)!!,
-                ItemAdapter.TARIFF
-            )
-        )
+        bottomNavigationView.setupWithNavController(navController)
 
-        // Фон с круглыми углами для юзер инфы
-        recyclerView.addItemDecoration(
-            RoundItemDecorator(
-                ResourcesCompat.getDrawable(resources, R.drawable.background_user_info, null)!!,
-                ItemAdapter.USER_INFO
-            )
-        )
+        if (savedInstanceState == null) {
+//            supportFragmentManager.beginTransaction()
+//                    .replace(R.id.container, MainFragment.newInstance())
+//                    .commit()
+        }
+        //remove, add, hide(), show(), commit, commitAllowingStateLoss(), commitNow
 
-        // Разделители
-        recyclerView.addItemDecoration(
-            DividerItemDecorator(
-                ResourcesCompat.getDrawable(resources, R.drawable.divider, null)!!
-            )
-        )
-        //endregion
-
-        recyclerView.adapter = adapter
     }
 }

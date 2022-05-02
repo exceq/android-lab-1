@@ -1,8 +1,8 @@
-package com.example.android_lab_1.api
+package com.example.android_lab_1.domain.api
 
-import com.example.android_lab_1.data.Balance
-import com.example.android_lab_1.data.Tariff
-import com.example.android_lab_1.data.UserInfoData
+import com.example.android_lab_1.domain.data.Balance
+import com.example.android_lab_1.domain.data.Tariff
+import com.example.android_lab_1.domain.data.UserInfoData
 import retrofit2.http.GET
 
 interface RetrofitServices {

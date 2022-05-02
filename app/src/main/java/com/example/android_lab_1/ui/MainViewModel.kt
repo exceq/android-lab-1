@@ -1,12 +1,12 @@
-package com.example.android_lab_1.ui.main
+package com.example.android_lab_1.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.android_lab_1.api.RetrofitServices
-import com.example.android_lab_1.data.BigTitle
-import com.example.android_lab_1.data.CategoryTitle
-import com.example.android_lab_1.data.RecycleViewItem
-import com.example.android_lab_1.data.UserInfo
+import com.example.android_lab_1.domain.api.RetrofitServices
+import com.example.android_lab_1.domain.data.BigTitle
+import com.example.android_lab_1.domain.data.CategoryTitle
+import com.example.android_lab_1.domain.data.RecycleViewItem
+import com.example.android_lab_1.domain.data.UserInfo
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(

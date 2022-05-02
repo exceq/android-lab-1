@@ -2,8 +2,10 @@ package com.example.android_lab_1
 
 import android.app.Application
 import android.content.Context
+import com.example.android_lab_1.di.AppComponent
+import com.example.android_lab_1.di.DaggerAppComponent
 
-class MainApp : Application() {
+class MainApplication : Application() {
 
     lateinit var appComponent: AppComponent
         private set
@@ -16,6 +18,6 @@ class MainApp : Application() {
 
 val Context.appComponent: AppComponent
     get() = when (this) {
-        is MainApp -> appComponent
+        is MainApplication -> appComponent
         else -> applicationContext.appComponent
     }

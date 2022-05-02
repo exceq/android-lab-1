@@ -1,12 +1,13 @@
-package com.example.android_lab_1
+package com.example.android_lab_1.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.android_lab_1.api.RetrofitServices
-import com.example.android_lab_1.repository.MockRepository
-import com.example.android_lab_1.repository.MockRepositoryImpl
-import com.example.android_lab_1.ui.main.MainFragment
-import com.example.android_lab_1.ui.main.MainViewModel
+import com.example.android_lab_1.MainActivity
+import com.example.android_lab_1.domain.api.RetrofitServices
+import com.example.android_lab_1.domain.repository.MockRepository
+import com.example.android_lab_1.domain.repository.MockRepositoryImpl
+import com.example.android_lab_1.ui.MainFragment
+import com.example.android_lab_1.ui.MainViewModel
 import dagger.Binds
 import dagger.Component
 import dagger.Module

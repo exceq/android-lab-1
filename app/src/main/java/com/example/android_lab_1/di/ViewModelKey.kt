@@ -1,4 +1,4 @@
-package com.example.android_lab_1
+package com.example.android_lab_1.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

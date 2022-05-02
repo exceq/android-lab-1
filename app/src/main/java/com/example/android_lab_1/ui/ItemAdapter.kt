@@ -1,16 +1,15 @@
-package com.example.android_lab_1.ui.main
+package com.example.android_lab_1.ui
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_lab_1.*
-import com.example.android_lab_1.data.*
+import com.example.android_lab_1.domain.data.*
 
 class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDiffCallback()) {
 

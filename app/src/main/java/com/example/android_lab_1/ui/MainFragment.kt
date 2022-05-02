@@ -1,4 +1,4 @@
-package com.example.android_lab_1.ui.main
+package com.example.android_lab_1.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_lab_1.R
-import com.example.android_lab_1.ViewModelFactory
+import com.example.android_lab_1.di.ViewModelFactory
 import com.example.android_lab_1.appComponent
-import com.example.android_lab_1.data.RecycleViewItem
+import com.example.android_lab_1.domain.data.RecycleViewItem
 import javax.inject.Inject
 
 class MainFragment : Fragment() {

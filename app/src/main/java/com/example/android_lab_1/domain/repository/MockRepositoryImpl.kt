@@ -1,9 +1,9 @@
-package com.example.android_lab_1.repository
+package com.example.android_lab_1.domain.repository
 
-import com.example.android_lab_1.api.RetrofitServices
-import com.example.android_lab_1.data.Balance
-import com.example.android_lab_1.data.Tariff
-import com.example.android_lab_1.data.UserInfoData
+import com.example.android_lab_1.domain.api.RetrofitServices
+import com.example.android_lab_1.domain.data.Balance
+import com.example.android_lab_1.domain.data.Tariff
+import com.example.android_lab_1.domain.data.UserInfoData
 import javax.inject.Inject
 
 class MockRepositoryImpl @Inject constructor(

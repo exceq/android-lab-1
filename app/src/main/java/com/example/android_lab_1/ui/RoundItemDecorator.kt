@@ -1,9 +1,8 @@
-package com.example.android_lab_1.ui.main
+package com.example.android_lab_1.ui
 
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.View
 import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView

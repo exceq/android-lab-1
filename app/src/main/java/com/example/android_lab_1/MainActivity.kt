@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.android_lab_1.repository.MockRepository
+import com.example.android_lab_1.domain.repository.MockRepository
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import javax.inject.Inject
 
@@ -28,13 +28,5 @@ class MainActivity : AppCompatActivity() {
         val navController = container.navController
 
         bottomNavigationView.setupWithNavController(navController)
-
-        if (savedInstanceState == null) {
-//            supportFragmentManager.beginTransaction()
-//                    .replace(R.id.container, MainFragment.newInstance())
-//                    .commit()
-        }
-        //remove, add, hide(), show(), commit, commitAllowingStateLoss(), commitNow
-
     }
 }

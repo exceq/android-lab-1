@@ -73,7 +73,8 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.getDataForProfile()
+        val dataForProfile = viewModel.getDataForProfile()
+        dataForProfile
             .observe(viewLifecycleOwner) { viewItems ->
                 items.addAll(viewItems)
                 adapter.submitList(items)

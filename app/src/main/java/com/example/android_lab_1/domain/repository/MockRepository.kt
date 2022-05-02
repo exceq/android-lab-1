@@ -5,9 +5,9 @@ import com.example.android_lab_1.domain.data.Tariff
 import com.example.android_lab_1.domain.data.UserInfoData
 
 interface MockRepository {
-    suspend fun getBalance(): List<Balance>
+    suspend fun getBalanceList(): List<Balance>
 
-    suspend fun getUserInfo(): List<UserInfoData>
+    suspend fun getUserInfoDataList(): List<UserInfoData>
 
-    suspend fun getTariffs(): List<Tariff>
+    suspend fun getTariffList(): List<Tariff>
 }

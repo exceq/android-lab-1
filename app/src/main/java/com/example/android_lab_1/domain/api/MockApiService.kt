@@ -5,7 +5,7 @@ import com.example.android_lab_1.domain.data.Tariff
 import com.example.android_lab_1.domain.data.UserInfoData
 import retrofit2.http.GET
 
-interface RetrofitServices {
+interface MockApiService {
 
     @GET("balance")
     suspend fun getBalance(): List<Balance>

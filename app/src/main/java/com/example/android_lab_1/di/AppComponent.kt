@@ -3,9 +3,10 @@ package com.example.android_lab_1.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.android_lab_1.MainActivity
-import com.example.android_lab_1.domain.api.RetrofitServices
+import com.example.android_lab_1.domain.api.MockApiService
 import com.example.android_lab_1.domain.repository.MockRepository
 import com.example.android_lab_1.domain.repository.MockRepositoryImpl
+import com.example.android_lab_1.domain.usecases.*
 import com.example.android_lab_1.ui.MainFragment
 import com.example.android_lab_1.ui.MainViewModel
 import dagger.Binds
@@ -45,7 +46,7 @@ abstract class ViewModelModule {
 class NetworkModule {
 
     @Provides
-    fun provideMockService(): RetrofitServices {
+    fun provideMockService(): MockApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://61f5894b62f1e300173c41ba.mockapi.io/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -61,4 +62,13 @@ interface AppBindModule {
     fun bindMockRepositoryImplToMockRepository(
         mockRepositoryImpl: MockRepositoryImpl
     ): MockRepository
+
+    @Binds
+    fun bindGetBalanceListUseCase(useCase: GetBalanceListUseCaseImpl): GetBalanceListUseCase
+
+    @Binds
+    fun bindGetUserInfoDataListUseCase(useCase: GetUserInfoDataDataListUseCaseImpl): GetUserInfoDataListUseCase
+
+    @Binds
+    fun bindGetTariffsListUseCase(useCase: GetTariffListUseCaseImpl): GetTariffListUseCase
 }

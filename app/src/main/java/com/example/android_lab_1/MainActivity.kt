@@ -1,34 +1,23 @@
 package com.example.android_lab_1
 
 import android.annotation.SuppressLint
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
-import android.util.Log
-import android.view.View
-import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.android_lab_1.data.*
-import com.example.android_lab_1.ui.main.DividerItemDecorator
-import com.example.android_lab_1.ui.main.ItemAdapter
-import com.example.android_lab_1.ui.main.RoundItemDecorator
-import com.example.android_lab_1.api.RetrofitClient
-import com.example.android_lab_1.ui.main.MainViewModel
+import com.example.android_lab_1.repository.MockRepository
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var repository: MockRepository
 
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        appComponent.inject(this)
         setContentView(R.layout.activity_main)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)

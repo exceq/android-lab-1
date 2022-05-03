@@ -1,6 +1,5 @@
 package com.example.android_lab_1
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -14,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var repository: MockRepository
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)

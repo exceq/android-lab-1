@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.android_lab_1.di.AppComponent
 import com.example.android_lab_1.di.DaggerAppComponent
+import com.example.android_lab_1.di.MockDatabaseModule
 
 class MainApplication : Application() {
 
@@ -12,7 +13,9 @@ class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.create()
+        appComponent = DaggerAppComponent.builder()
+            .mockDatabaseModule(MockDatabaseModule(applicationContext))
+            .build()
     }
 }
 

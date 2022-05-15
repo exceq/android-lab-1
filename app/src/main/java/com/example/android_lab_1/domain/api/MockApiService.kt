@@ -8,12 +8,12 @@ import retrofit2.http.GET
 interface MockApiService {
 
     @GET("balance")
-    suspend fun getBalance(): List<Balance>
+    suspend fun getBalanceList(): List<Balance>
 
     @GET("userInfo")
-    suspend fun getUserInfo(): List<UserInfoData>
+    suspend fun getUserInfoList(): List<UserInfoData>
 
     @GET("tariffs")
-    suspend fun getTariffs(): List<Tariff>
+    suspend fun getTariffList(): List<Tariff>
 
 }

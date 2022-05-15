@@ -1,7 +1,7 @@
 package com.example.android_lab_1.di
 
 import com.example.android_lab_1.domain.repository.MockRepository
-import com.example.android_lab_1.domain.repository.MockRepositoryImpl
+import com.example.android_lab_1.domain.repository.MockRepositoryRemoteImpl
 import com.example.android_lab_1.domain.usecases.*
 import dagger.Binds
 import dagger.Module
@@ -11,14 +11,14 @@ interface AppBindModule {
 
     @Binds
     fun bindMockRepositoryImplToMockRepository(
-        mockRepositoryImpl: MockRepositoryImpl
+        mockRepositoryRemoteImpl: MockRepositoryRemoteImpl
     ): MockRepository
 
     @Binds
     fun bindGetBalanceListUseCase(useCase: GetBalanceListUseCaseImpl): GetBalanceListUseCase
 
     @Binds
-    fun bindGetUserInfoDataListUseCase(useCase: GetUserInfoDataDataListUseCaseImpl): GetUserInfoDataListUseCase
+    fun bindGetUserInfoDataListUseCase(useCase: GetUserInfoDataListUseCaseImpl): GetUserInfoDataListUseCase
 
     @Binds
     fun bindGetTariffsListUseCase(useCase: GetTariffListUseCaseImpl): GetTariffListUseCase

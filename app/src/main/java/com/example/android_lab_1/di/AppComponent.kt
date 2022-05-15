@@ -6,6 +6,7 @@ import dagger.Component
 import dagger.Module
 import javax.inject.Singleton
 
+
 @Singleton
 @Component(modules = [AppModule::class])
 interface AppComponent {
@@ -15,5 +16,12 @@ interface AppComponent {
     fun viewModelFactory(): ViewModelFactory
 }
 
-@Module(includes = [NetworkModule::class, AppBindModule::class, ViewModelModule::class])
+@Module(
+    includes = [
+        NetworkModule::class,
+        AppBindModule::class,
+        ViewModelModule::class,
+        MockDatabaseModule::class,
+    ]
+)
 class AppModule

@@ -2,12 +2,10 @@ package com.example.android_lab_1.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.android_lab_1.domain.api.MockApiService
 import com.example.android_lab_1.domain.data.BigTitle
 import com.example.android_lab_1.domain.data.CategoryTitle
 import com.example.android_lab_1.domain.data.RecycleViewItem
 import com.example.android_lab_1.domain.data.UserInfo
-import com.example.android_lab_1.domain.repository.MockRepository
 import com.example.android_lab_1.domain.usecases.GetBalanceListUseCase
 import com.example.android_lab_1.domain.usecases.GetTariffListUseCase
 import com.example.android_lab_1.domain.usecases.GetUserInfoDataListUseCase

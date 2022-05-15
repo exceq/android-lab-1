@@ -4,11 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android_lab_1.*
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.android_lab_1.R
+import com.example.android_lab_1.databinding.*
 import com.example.android_lab_1.domain.data.*
 
 class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDiffCallback()) {
@@ -22,32 +23,35 @@ class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDif
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+        private val balanceItemBinding: BalanceItemBinding by viewBinding()
+        private val tariffItemBinding: TariffItemBinding by viewBinding()
+        private val categoryTitleBinding: CategoryTitleBinding by viewBinding()
+        private val userInfoBinding: UserInfoBinding by viewBinding()
+        private val bigTitleBinding: BigTitleBinding by viewBinding()
 
         @SuppressLint("SetTextI18n")
         fun bind(item: RecycleViewItem) {
             when (item) {
                 is Balance -> {
-                    itemView.findViewById<TextView>(R.id.balanceTitle).text = "Ваш баланс" //item.title
-                    itemView.findViewById<TextView>(R.id.personId).text = item.accountNumber.toString()
-                    itemView.findViewById<TextView>(R.id.currentBalance).text = "${item.balance} ₽"
-                    val toPayTitle = itemView.findViewById<TextView>(R.id.toPayForMonthTitle)
-                    toPayTitle.text = "К оплате за месяц: ${item.nextPay} ₽"
+                    balanceItemBinding.balanceTitle.text = "Ваш баланс" //item.title
+                    balanceItemBinding.personId.text = item.accountNumber.toString()
+                    balanceItemBinding.currentBalance.text = "${item.balance} ₽"
+                    balanceItemBinding.toPayForMonthTitle.text = "К оплате за месяц: ${item.nextPay} ₽"
                 }
                 is Tariff -> {
-                    itemView.findViewById<TextView>(R.id.tariffTitle).text = item.title
-                    itemView.findViewById<TextView>(R.id.tariffDescription).text = item.description
-                    itemView.findViewById<TextView>(R.id.perMonthPrice).text = "${item.cost} ₽"
+                    tariffItemBinding.tariffTitle.text = item.title
+                    tariffItemBinding.tariffDescription.text = item.description
+                    tariffItemBinding.perMonthPrice.text = "${item.cost} ₽"
                 }
                 is CategoryTitle -> {
-                    itemView.findViewById<TextView>(R.id.categoryTitle).text = item.title
+                    categoryTitleBinding.categoryTitle.text = item.title
                 }
                 is UserInfo -> {
-                    itemView.findViewById<TextView>(R.id.infoText).text = item.title
-//                    itemView.findViewById<ImageView>(R.id.infoIcon).setImageDrawable(item.profileIcon) // TODO картинку профиля
+                    userInfoBinding.infoText.text = item.title
+//                    userInfoBinding.infoIcon.setImageDrawable(item.profileIcon) // TODO картинку профиля
                 }
                 is BigTitle -> {
-                    itemView.findViewById<TextView>(R.id.accountTitle).text = item.title
+                    bigTitleBinding.accountTitle.text = item.title
                 }
 
             }
@@ -92,7 +96,10 @@ class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDif
         override fun areItemsTheSame(oldItem: RecycleViewItem, newItem: RecycleViewItem): Boolean =
             oldItem === newItem
 
-        override fun areContentsTheSame(oldItem: RecycleViewItem, newItem: RecycleViewItem): Boolean =
+        override fun areContentsTheSame(
+            oldItem: RecycleViewItem,
+            newItem: RecycleViewItem
+        ): Boolean =
             oldItem.hashCode() == newItem.hashCode()
     }
 }

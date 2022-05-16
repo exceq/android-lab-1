@@ -18,7 +18,6 @@ class MockRepositoryRemoteImpl @Inject constructor(
         balanceList.forEach {
             mockDatabase.getBalanceDao().saveBalanceLocal(it)
         }
-        //Log.e("TAG_LOCAL", mockDatabase.getBalanceDao().getBalanceList().toString())
         return balanceList
     }
 
@@ -32,9 +31,21 @@ class MockRepositoryRemoteImpl @Inject constructor(
 
     override suspend fun getTariffList(): List<Tariff> {
         val tariffList = mockApiService.getTariffList()
+
+        Log.e("TAG_remote", tariffList.toString())
+
+        Log.e("TAG_local_before", mockDatabase.getTariffDao().getTariffList().toString())
         tariffList.forEach {
-            mockDatabase.getTariffDao().saveTariffLocal(it)
+            mockDatabase.getTariffDao().saveTariffLocal(it) // сохранение работает
         }
+
+        Log.e("TAG_local", mockDatabase.getTariffDao().getTariffList().toString())
+        tariffList.forEach {
+            mockDatabase.getTariffDao().deleteTariff(it) // удаление работает
+        }
+
+        Log.e("TAG_local_after_delete", mockDatabase.getTariffDao().getTariffList().toString())
+
         return tariffList
     }
 

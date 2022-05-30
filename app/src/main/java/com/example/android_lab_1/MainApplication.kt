@@ -14,7 +14,8 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent.builder()
-            .mockDatabaseModule(MockDatabaseModule(applicationContext))
+            .application(this)
+            //.mockDatabaseModule(MockDatabaseModule(applicationContext))
             .build()
     }
 }

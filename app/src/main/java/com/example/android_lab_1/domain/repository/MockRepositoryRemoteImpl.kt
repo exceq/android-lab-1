@@ -1,16 +1,27 @@
 package com.example.android_lab_1.domain.repository
 
+import android.content.Context
 import android.util.Log
+import com.example.android_lab_1.R
 import com.example.android_lab_1.domain.api.MockApiService
 import com.example.android_lab_1.domain.data.Balance
 import com.example.android_lab_1.domain.data.Tariff
 import com.example.android_lab_1.domain.data.UserInfoData
 import com.example.android_lab_1.domain.data.room.MockDatabase
 import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class ResourceProvider @Inject constructor(val context: Context) {
+    fun getString(int: Int): String {
+        return context.resources.getString(int)
+    }
+}
 
 class MockRepositoryRemoteImpl @Inject constructor(
     private val mockApiService: MockApiService,
-    private val mockDatabase: MockDatabase
+    private val mockDatabase: MockDatabase,
+    private val context: Context
 ) : MockRepository {
 
     override suspend fun getBalanceList(): List<Balance> {

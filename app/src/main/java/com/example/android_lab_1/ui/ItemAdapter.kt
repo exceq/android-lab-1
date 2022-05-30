@@ -11,8 +11,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.android_lab_1.R
 import com.example.android_lab_1.databinding.*
 import com.example.android_lab_1.domain.data.*
-import com.example.android_lab_1.domain.data.Balance
-import com.example.android_lab_1.domain.data.Tariff
 
 class ItemAdapter : ListAdapter<RecycleViewItem, ItemAdapter.ViewHolder>(ItemDiffCallback()) {
 

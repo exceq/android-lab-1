@@ -5,14 +5,15 @@ import androidx.room.Room
 import com.example.android_lab_1.domain.data.room.MockDatabase
 import dagger.Module
 import dagger.Provides
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
-class MockDatabaseModule(private val context: Context) {
+class MockDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(): MockDatabase =
+    fun provideDatabase(context: Context): MockDatabase =
         Room.databaseBuilder(
             context,
             MockDatabase::class.java,
